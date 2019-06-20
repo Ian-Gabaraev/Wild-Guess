@@ -24,6 +24,7 @@ users = {
     'i': 0,
     'd': 0
 }
+
 user_names = {
     'i': "Ian>>>",
     'd': "Donat>>>"
@@ -125,24 +126,29 @@ def guess():
         try:
             user_input = int(input(bcolors.VIOLET2 + user_names[user] + bcolors.ENDC))
             evaluate(user_input)
+            
         except ValueError:
             attempts += 1
             game_stats[user]+=1
             print("Wrong input!")
             continue
+            
         except KeyError:
             print("Wrong user! Try again.")
             guess()
+            
         if answer > number:
             attempts+=1
             game_stats[user] += 1.0
             print(bcolors.RED2 + "Too high!" + bcolors.ENDC)
             continue
+            
         elif answer < number:
             attempts+=1
             game_stats[user] += 1.0
             print(bcolors.OKBLUE +  "Too low!" + bcolors.ENDC)
             continue
+            
         else:
             attempts+=1
             game_stats[user] += 1.0
@@ -150,16 +156,5 @@ def guess():
             game_stats['rounds']+=0.5
             accept(attempts)
 
-        #results()
-
 load_quotations()
 guess()
-
-
-
-
-
-
-
-
-
